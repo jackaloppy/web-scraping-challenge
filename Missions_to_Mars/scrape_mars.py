@@ -1,5 +1,5 @@
 from splinter import Browser
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 
@@ -37,7 +37,7 @@ def scrape():
     raw_table.set_index('Characteristics', inplace=True)
     
     #Convert table to html format.
-    html_table = raw_table.to_html()
+    html_table = raw_table.to_html(classes='table table-striped table-bordered', justify='center')
     
     #Scrape Mars Hemisphere Photos.
     usgs_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
@@ -66,3 +66,4 @@ def scrape():
     browser.quit()
     
     return mars_data
+
